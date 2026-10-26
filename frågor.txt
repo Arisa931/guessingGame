@@ -1,3 +1,4 @@
+Jag siktar på vg
 1. Vad är pull respektive push?
 Pull hämtar ändringar från ett remote repository och integrerar dem i min lokala branch.
 Push skickar mina lokala commits till remote repository på GitHub så att ändringarna blir tillgängliga där.
@@ -9,4 +10,26 @@ Status används för att se aktuell status. Kommandot visar till exempel ändrad
 3. Vad är en Git branch och varför är den viktig?
 Bransch är en separat utvecklingslinje i Git. Den gör att man kan utveckla en funktion utan att direkt ändra huvudbranchen.
 Branches är användbara när flera utvecklare arbetar samtidigt, eftersom varje utvecklare kan arbeta med sin funktion separat och sedan integrera ändringarna.
+
+4. Hur kan man rulla tillbaka kod till ett tidigare tillstånd?
+Det finns flera sätt att återställa kod i Git. Vilket kommando man väljer beror på om man vill ångra en commit, flytta branchen till en tidigare commit eller behålla ändringar för att arbeta vidare.
+
+git revert skapar en ny commit som ångrar ändringarna från en tidigare commit. Det är ofta ett bra val när ändringen redan har pushats eller delats med andra, eftersom den befintliga historiken bevaras.
+
+Exempel:
+
+git revert COMMIT_ID
+Här ersätter jag COMMIT_ID med ID för den commit jag vill ångra.
+
+git reset
+git reset flyttar den aktuella branchen till en tidigare commit. Beroende på vilket alternativ man använder påverkas även stagingområdet och arbetskatalogen.
+
+Exempel:
+
+git reset --mixed COMMIT_ID
+Detta flyttar branchen till den valda committen och lämnar ändringarna från de borttagna commitsen kvar i arbetskatalogen, men inte staged. Det passar främst för lokal historik som ännu inte har delats med andra.
+
+Man bör vara försiktig med git reset, särskilt om commits redan har pushats, eftersom det kan ändra historiken som andra använder.
+
+Jag kommer att testa git revert och git reset på en separat branch så att huvudbranchen behåller den fungerande versionen. Jag kommer att dokumentera de faktiska kommandona och terminalresultaten efter testerna.
 
