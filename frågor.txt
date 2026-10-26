@@ -33,3 +33,31 @@ Man bör vara försiktig med git reset, särskilt om commits redan har pushats, 
 
 Jag kommer att testa git revert och git reset på en separat branch så att huvudbranchen behåller den fungerande versionen. Jag kommer att dokumentera de faktiska kommandona och terminalresultaten efter testerna.
 
+Exempel på git revert:
+Jag ändrade rollback-demo.txt från "version 1" till "version 2" och gjorde commits.
+Jag körde:
+git revert --no-edit HEAD
+
+Resultat:
+[rollback-test ded60de] Revert "Update rollback demo file"
+1 file changed, 1 insertion(+), 1 deletion(-)
+
+Efteråt visade cat rollback-demo.txt:
+version 1
+
+git log visade en ny Revert-commit. Den tidigare historiken fanns kvar.
+
+Exempel på git reset --mixed:
+Jag körde:
+git reset --mixed HEAD~1
+
+Resultat:
+Unstaged changes after reset:
+M rollback-demo.txt
+
+git status visade att rollback-demo.txt var ändrad men inte stage:ad.
+git log visade att HEAD flyttats från ded60de tillbaka till cb8680b.
+
+git revert passar när man vill ångra en commit genom att skapa en ny commit och behålla historiken.
+git reset --mixed passar främst för lokal historik när man vill flytta tillbaka HEAD och behålla filändringarna ostage:ade. Man bör vara försiktig med reset på commits som redan delats med andra.
+
