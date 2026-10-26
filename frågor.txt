@@ -1,0 +1,12 @@
+1. Vad är pull respektive push?
+Pull hämtar ändringar från ett remote repository och integrerar dem i min lokala branch.
+Push skickar mina lokala commits till remote repository på GitHub så att ändringarna blir tillgängliga där.
+
+2. När använder man log respektive status?
+Log används för att se tidigare commits i repositoryt. Man kan bland annat se commit-meddelanden och commit-ID:n.
+Status används för att se aktuell status. Kommandot visar till exempel ändrade filer, filer som inte spåras av Git och filer som är redo att committas.
+
+3. Vad är en Git branch och varför är den viktig?
+Bransch är en separat utvecklingslinje i Git. Den gör att man kan utveckla en funktion utan att direkt ändra huvudbranchen.
+Branches är användbara när flera utvecklare arbetar samtidigt, eftersom varje utvecklare kan arbeta med sin funktion separat och sedan integrera ändringarna.
+
