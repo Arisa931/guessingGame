@@ -56,14 +56,17 @@ public void start() {
    * a valid reply. Return the String that you read from
    * the player.
    */
-  private String getReply(){
-    String reply = null;
-    // Write code here which reads a String from the console.
-    // As long as it is not a valid reply (one of "T" and "F")
-    // write an error message, and read a new reply.
-    // When you have gotten a valid reply, return it.
+private String getReply() {
+    Console console = System.console();
+    String reply = console.readLine();
+
+    while (!"T".equals(reply) && !"F".equals(reply)) {
+        System.out.println("Please answer T or F:");
+        reply = console.readLine();
+    }
+
     return reply;
-  }
+}
 
   private void doGuesses(){
     int i=0; // number of guesses
